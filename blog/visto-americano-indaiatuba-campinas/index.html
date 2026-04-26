@@ -61,19 +61,24 @@
                         <img src="https://i.ibb.co/gbY8Qtmb/instagramknj.webp" alt="Instagram" class="w-6 h-6 object-contain" referrerPolicy="no-referrer">
                     </a>
                     <a href="https://wa.me/5511994085822?text=Olá%20Kenji!%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20dúvida." target="_blank" class="btn-luxury btn-whatsapp !px-8 !py-3 hidden md:flex">WhatsApp</a>
+                    
+                    <button id="menu-btn" class="lg:hidden text-primary p-2">
+                        <i data-lucide="menu" size="28"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 bg-ink flex flex-col items-center justify-center gap-8 text-2xl font-black uppercase italic tracking-tighter hidden">
-        <a href="../../index.html">Home</a>
-        <a href="../../sobre-nos/">Sobre</a>
-        <a href="../../visto-americano/">Visto</a>
-        <a href="../../viagens/">Viagens</a>
-        <a href="../">Blog</a>
-        <a href="https://wa.me/5511994085822?text=Olá%20vim%20pelo%20site%20e%20gostaria%20de%20maiores%20informações" class="text-primary border-2 border-primary px-8 py-4 rounded-full">WhatsApp</a>
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-ink flex flex-col items-center justify-center gap-8 text-2xl font-black uppercase italic tracking-tighter opacity-0 invisible transition-all duration-500 overflow-y-auto pt-20">
+        <a href="../../index.html" class="hover:text-primary">Home</a>
+        <a href="../../sobre-nos/" class="hover:text-primary">Sobre</a>
+        <a href="../../visto-americano/" class="hover:text-primary">Visto</a>
+        <a href="../../viagens/" class="hover:text-primary">Viagens</a>
+        <a href="../" class="hover:text-primary">Blog</a>
+        <div class="h-[1px] w-12 bg-white/10 my-2"></div>
+        <a href="https://wa.me/5511994085822?text=Olá%20vim%20pelo%20site%20e%20gostaria%20de%20maiores%20informações" class="btn-luxury btn-whatsapp !px-10 !py-4">WhatsApp</a>
         <a href="https://www.instagram.com/knjtur" target="_blank" class="flex items-center gap-2 text-white hover:text-primary">
             <img src="https://i.ibb.co/gbY8Qtmb/instagramknj.webp" alt="Instagram" class="w-8 h-8 object-contain" referrerPolicy="no-referrer"> Instagram
         </a>

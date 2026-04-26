@@ -29,18 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            mobileMenu.classList.remove('hidden'); // Ensure it's not hidden if we're using transition
+            const isActive = mobileMenu.classList.toggle('active');
             
-            const icon = menuBtn.querySelector('i');
-            if (icon) {
-                if (mobileMenu.classList.contains('active')) {
-                    icon.setAttribute('data-lucide', 'x');
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    icon.setAttribute('data-lucide', 'menu');
-                    document.body.style.overflow = '';
-                }
+            // Toggle body scroll
+            document.body.style.overflow = isActive ? 'hidden' : '';
+            
+            // Update icon
+            menuBtn.innerHTML = isActive 
+                ? '<i data-lucide="x" size="28"></i>' 
+                : '<i data-lucide="menu" size="28"></i>';
+            
+            if (window.lucide) {
                 window.lucide.createIcons();
             }
         });
@@ -50,9 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = '';
-                const icon = menuBtn.querySelector('i');
-                if (icon) {
-                    icon.setAttribute('data-lucide', 'menu');
+                menuBtn.innerHTML = '<i data-lucide="menu" size="28"></i>';
+                if (window.lucide) {
                     window.lucide.createIcons();
                 }
             });
@@ -72,19 +70,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Back to top button visibility and action
+    // Floating buttons visibility and action
+    const floatingActions = document.getElementById('floating-actions');
     const backToTop = document.getElementById('back-to-top');
-    if (backToTop) {
+    
+    if (floatingActions) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 500) {
-                backToTop.classList.remove('opacity-0', 'invisible', 'translate-y-10');
-                backToTop.classList.add('opacity-100', 'visible', 'translate-y-0');
+                floatingActions.classList.remove('opacity-0', 'invisible', 'translate-y-10');
+                floatingActions.classList.add('opacity-100', 'visible', 'translate-y-0');
             } else {
-                backToTop.classList.add('opacity-0', 'invisible', 'translate-y-10');
-                backToTop.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                floatingActions.classList.add('opacity-0', 'invisible', 'translate-y-10');
+                floatingActions.classList.remove('opacity-100', 'visible', 'translate-y-0');
             }
         });
+    }
 
+    if (backToTop) {
         backToTop.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,

@@ -48,7 +48,7 @@
             </a>
             
             <div class="flex items-center gap-10">
-                <nav class="hidden lg:flex items-center gap-10 text-[10px] font-bold uppercase tracking-[0.25em] text-primary-light/60">
+                <nav class="hidden lg:flex items-center gap-10 text-[13px] font-bold uppercase tracking-[0.25em] text-primary-light/60">
                     <a href="../../index.html" class="nav-link-premium hover:text-primary transition-colors">Home</a>
                     <a href="../../sobre-nos/" class="nav-link-premium hover:text-primary transition-colors">Sobre</a>
                     <div class="relative group">
@@ -58,14 +58,14 @@
                         <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-50">
                             <div class="bg-ink border border-white/10 p-6 rounded-2xl w-64 shadow-2xl backdrop-blur-xl">
                                 <div class="flex flex-col gap-4">
-                                    <a href="../../visto-americano/" class="text-[9px] hover:text-primary transition-colors">Visto Americano</a>
-                                    <a href="../../viagens/" class="text-[9px] hover:text-primary transition-colors">Planejamento Completo</a>
-                                    <a href="../passagens-aereas/" class="text-[9px] hover:text-primary transition-colors">Passagens Aéreas</a>
-                                    <a href="../hospedagem/" class="text-[9px] hover:text-primary transition-colors">Hospedagem</a>
-                                    <a href="../roteiros-personalizados/" class="text-[9px] hover:text-primary transition-colors">Roteiros Personalizados</a>
-                                    <a href="./" class="text-[9px] text-primary transition-colors">Cruzeiros</a>
-                                    <a href="../ingressos/" class="text-[9px] hover:text-primary transition-colors">Ingressos Parques</a>
-                                    <a href="../traslados/" class="text-[9px] hover:text-primary transition-colors">Traslados</a>
+                                    <a href="../../visto-americano/" class="text-[11px] hover:text-primary transition-colors">Visto Americano</a>
+                                    <a href="../../viagens/" class="text-[11px] hover:text-primary transition-colors">Planejamento Completo</a>
+                                    <a href="../passagens-aereas/" class="text-[11px] hover:text-primary transition-colors">Passagens Aéreas</a>
+                                    <a href="../hospedagem/" class="text-[11px] hover:text-primary transition-colors">Hospedagem</a>
+                                    <a href="../roteiros-personalizados/" class="text-[11px] hover:text-primary transition-colors">Roteiros Personalizados</a>
+                                    <a href="./" class="text-[11px] text-primary transition-colors">Cruzeiros</a>
+                                    <a href="../ingressos/" class="text-[11px] hover:text-primary transition-colors">Ingressos Parques</a>
+                                    <a href="../traslados/" class="text-[11px] hover:text-primary transition-colors">Traslados</a>
                                 </div>
                             </div>
                         </div>
@@ -207,10 +207,17 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 z-[60] bg-primary text-white p-3 rounded-full shadow-2xl opacity-0 invisible translate-y-10 transition-all duration-500 hover:bg-gold">
-        <i data-lucide="chevron-up" size="24"></i>
-    </button>
+    <!-- Floating Action Buttons -->
+    <div id="floating-actions" class="floating-actions opacity-0 invisible translate-y-10 transition-all duration-500">
+        <!-- WhatsApp Float -->
+        <a href="https://wa.me/5511994085822?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20atendimento%20personalizado." target="_blank" class="float-btn float-whatsapp" title="Falar no WhatsApp">
+            <i data-lucide="message-circle" size="28"></i>
+        </a>
+        <!-- Back to Top Button -->
+        <button id="back-to-top" class="float-btn float-top" title="Voltar ao topo">
+            <i data-lucide="chevron-up" size="28"></i>
+        </button>
+    </div>
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="../../script.js"></script>
