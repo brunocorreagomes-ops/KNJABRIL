@@ -128,6 +128,16 @@ button {
   color: var(--ink);
 }
 
+/* Luxury Header Styling */
+header {
+    z-index: 110 !important;
+}
+
+/* Mobile Menu Base State */
+#mobile-menu {
+    z-index: 100 !important;
+}
+
 /* Mobile Menu Active State */
 #mobile-menu.active {
     opacity: 1 !important;
