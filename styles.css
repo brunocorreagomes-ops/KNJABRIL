@@ -240,7 +240,7 @@ button {
     height: 56px;
     border-radius: 50%;
     display: flex;
-    items-center: center;
+    align-items: center;
     justify-content: center;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
