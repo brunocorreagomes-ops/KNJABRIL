@@ -27,13 +27,26 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Poppins', 'sans-serif'],
-                        display: ['Poppins', 'sans-serif'],
+                        serif: ['Inter', 'sans-serif'],
+                        display: ['Inter', 'sans-serif'],
                     },
                 }
             }
         }
-    </script>
+    <style>
+        .filter-btn {
+            @apply px-6 py-2 rounded-full border border-white/10 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all duration-300;
+        }
+        .filter-btn:hover {
+            @apply border-primary/50 text-white;
+        }
+        .filter-btn.active {
+            @apply bg-primary border-primary text-white shadow-lg shadow-primary/20;
+        }
+        select option {
+            @apply bg-ink text-primary;
+        }
+    </style>
 </head>
 <body class="bg-ink text-primary-light antialiased selection:bg-primary/30">
     <!-- Header -->
@@ -92,7 +105,7 @@
     </header>
 
     <!-- Mobile Menu Container -->
-    <div id="mobile-menu" class="fixed inset-0 bg-ink/95 backdrop-blur-xl flex flex-col items-center gap-6 text-2xl font-serif italic tracking-tight opacity-0 invisible transition-all duration-500 overflow-y-auto pt-40 pb-12">
+    <div id="mobile-menu" class="fixed inset-0 bg-ink/95 backdrop-blur-xl flex flex-col items-center gap-6 text-2xl font-display uppercase tracking-widest opacity-0 invisible transition-all duration-500 overflow-y-auto pt-40 pb-12">
         <a href="../index.html" class="text-white hover:text-primary transition-colors">Home</a>
         <a href="../sobre-nos/" class="text-white hover:text-primary transition-colors">Sobre</a>
         <a href="../visto-americano/" class="text-white hover:text-primary transition-colors">Visto Americano</a>
@@ -134,20 +147,49 @@
                         <div class="h-[1px] w-12 bg-primary"></div>
                         <span class="text-primary text-[10px] uppercase tracking-[0.4em] font-bold">Inteligência & Destinos</span>
                     </div>
-                    <h1 class="text-5xl md:text-8xl font-serif italic leading-[1.1] text-white mb-8 tracking-tighter">
-                        Artigos para quem <br><span class="text-primary not-italic">viaja com inteligência</span>
+                    <h1 class="text-5xl md:text-8xl font-display font-black leading-[1.1] text-white mb-8 tracking-tighter">
+                        Artigos para quem <br><span class="text-primary italic">viaja com inteligência</span>
                     </h1>
                 </div>
 
+                <!-- Filter Bar -->
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-16 reveal reveal-up">
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button class="filter-btn active" data-filter="all">Todos</button>
+                        <button class="filter-btn" data-filter="Visto Americano">Visto Americano</button>
+                        <button class="filter-btn" data-filter="Dicas de Viagem">Dicas de Viagem</button>
+                        <button class="filter-btn" data-filter="Notícias Globais">Notícias Globais</button>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-primary-light/40">Ordenar:</span>
+                        <select id="sort-date" class="bg-transparent border-b border-primary/30 text-[10px] uppercase font-bold tracking-widest text-primary focus:outline-none cursor-pointer py-1">
+                            <option value="newest">Mais Recentes</option>
+                            <option value="oldest">Mais Antigos</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div id="blog-posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-24">
+                    <!-- Post NEW: Alternativas Europa -->
+                    <article class="blog-post reveal reveal-up group" data-category="Dicas de Viagem" data-date="2026-04-29">
+                        <a href="alternativas-turismo-massa-europa-2026/" class="block overflow-hidden rounded-[3rem] mb-8 relative aspect-[4/5] border border-white/5">
+                            <img src="https://i.ibb.co/fzLVb2DX/turismo-grecia.webp" alt="Europa Exclusiva" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer">
+                            <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-8 left-8 right-8">
+                                <span class="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-3 block">Dicas de Viagem</span>
+                                <h3 class="text-2xl font-display italic text-white leading-tight">3 Destinos Europeus Exclusivos para Fugir das Taxas em 2026</h3>
+                            </div>
+                        </a>
+                    </article>
+
                     <!-- Post 0: Tarifa de Luto -->
-                    <article class="blog-post reveal reveal-up group">
+                    <article class="blog-post reveal reveal-up group" data-category="Dicas de Viagem" data-date="2026-04-25">
                         <a href="tarifa-de-luto-o-que-e-como-solicitar/" class="block overflow-hidden rounded-[3rem] mb-8 relative aspect-[4/5] border border-white/5">
                             <img src="https://i.ibb.co/N6XV868M/LUTO-TARIFA-1.webp" alt="Tarifa de Luto" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer">
                             <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-80"></div>
                             <div class="absolute bottom-8 left-8 right-8">
                                 <span class="bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[9px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 inline-block">Direitos do Passageiro</span>
-                                <h3 class="text-white text-2xl font-serif italic leading-tight italic font-bold">Tarifa de Luto: o que é e como solicitar</h3>
+                                <h3 class="text-2xl font-display italic text-white leading-tight">Tarifa de Luto: o que é e como solicitar</h3>
                             </div>
                         </a>
                         <p class="text-primary-light/40 text-xs leading-relaxed mb-6 font-light">Entenda o auxílio especial das companhias aéreas para casos de emergência familiar e falecimento.</p>
@@ -155,13 +197,13 @@
                     </article>
 
                     <!-- Post 1: Indaiatuba & Campinas -->
-                    <article class="blog-post reveal reveal-up group">
+                    <article class="blog-post reveal reveal-up group" data-category="Visto Americano" data-date="2026-04-21">
                         <a href="visto-americano-indaiatuba-campinas/" class="block overflow-hidden rounded-[3rem] mb-8 relative aspect-[4/5] border border-white/5">
                             <img src="https://i.ibb.co/5W3LnZNQ/vistoindaiatuba.webp" alt="Visto Americano" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer">
                             <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-80"></div>
                             <div class="absolute bottom-8 left-8 right-8">
                                 <span class="bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[9px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 inline-block">Estratégia</span>
-                                <h3 class="text-white text-2xl font-serif italic leading-tight italic font-bold">Visto Americano em Indaiatuba e Campinas</h3>
+                                <h3 class="text-2xl font-display italic text-white leading-tight">Visto Americano em Indaiatuba e Campinas</h3>
                             </div>
                         </a>
                         <p class="text-primary-light/40 text-xs leading-relaxed mb-6 font-light">Entenda como a logística estratégica do interior paulista pode ser sua maior aliada no processo consular em 2026.</p>
@@ -169,13 +211,13 @@
                     </article>
 
                     <!-- Post 2: Europa EES -->
-                    <article class="blog-post reveal reveal-up reveal-delay-1 group">
+                    <article class="blog-post reveal reveal-up reveal-delay-1 group" data-category="Notícias Globais" data-date="2026-04-20">
                         <a href="ees-passo-a-passo-completo-europa/" class="block overflow-hidden rounded-[3rem] mb-8 relative aspect-[4/5] border border-white/5">
                             <img src="https://i.ibb.co/G41sDLxk/europaees-3.png" alt="EES Europa" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer">
                             <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-80"></div>
                             <div class="absolute bottom-8 left-8 right-8">
                                 <span class="bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[9px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 inline-block">Europa 2026</span>
-                                <h3 class="text-white text-2xl font-serif italic leading-tight italic font-bold">EES Europa: Guia Completo para Turistas</h3>
+                                <h3 class="text-2xl font-display italic text-white leading-tight">EES Europa: Guia Completo para Turistas</h3>
                             </div>
                         </a>
                         <p class="text-primary-light/40 text-xs leading-relaxed mb-6 font-light">As novas regras de controle biométrico e registro de entrada que mudam a forma como entramos no continente europeu.</p>
@@ -183,13 +225,13 @@
                     </article>
 
                     <!-- Post 3: Por Onde Começar -->
-                    <article class="blog-post reveal reveal-up reveal-delay-2 group">
+                    <article class="blog-post reveal reveal-up reveal-delay-2 group" data-category="Visto Americano" data-date="2026-04-20">
                         <a href="visto-americano-por-onde-comecar/" class="block overflow-hidden rounded-[3rem] mb-8 relative aspect-[4/5] border border-white/5">
                             <img src="https://i.ibb.co/m5sX9DXr/knj-visto-blog.webp" alt="Visto Americano Início" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer">
                             <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-80"></div>
                             <div class="absolute bottom-8 left-8 right-8">
                                 <span class="bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[9px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 inline-block">Iniciantes</span>
-                                <h3 class="text-white text-2xl font-serif italic leading-tight italic font-bold">Visto Americano: Por onde começar em 2026?</h3>
+                                <h3 class="text-2xl font-display italic text-white leading-tight">Visto Americano: Por onde começar em 2026?</h3>
                             </div>
                         </a>
                         <p class="text-primary-light/40 text-xs leading-relaxed mb-6 font-light">O passo zero para quem deseja os EUA. Critérios de elegibilidade, categorias de visto e primeiros passos práticos.</p>
@@ -197,13 +239,13 @@
                     </article>
 
                     <!-- Post 4: Entrevista -->
-                    <article class="blog-post reveal reveal-up group">
+                    <article class="blog-post reveal reveal-up group" data-category="Visto Americano" data-date="2026-04-10">
                         <a href="entrevista-consulado-americano-guia-pratico/" class="block overflow-hidden rounded-[3rem] mb-8 relative aspect-[4/5] border border-white/5">
                             <img src="https://i.ibb.co/xKjQ3zZR/entrevista-visto.webp" alt="Entrevista Consulado" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer">
                             <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-80"></div>
                             <div class="absolute bottom-8 left-8 right-8">
                                 <span class="bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[9px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 inline-block">Preparação</span>
-                                <h3 class="text-white text-2xl font-serif italic leading-tight italic font-bold">Entrevista no Consulado: O Guia Prático</h3>
+                                <h3 class="text-2xl font-display italic text-white leading-tight">Entrevista no Consulado: O Guia Prático</h3>
                             </div>
                         </a>
                         <p class="text-primary-light/40 text-xs leading-relaxed mb-6 font-light">Como se comportar, o que falar e como organizar seus documentos para o momento decisivo da aprovação.</p>
@@ -211,13 +253,13 @@
                     </article>
 
                     <!-- Post 5: Renovação -->
-                    <article class="blog-post reveal reveal-up reveal-delay-1 group">
+                    <article class="blog-post reveal reveal-up reveal-delay-1 group" data-category="Visto Americano" data-date="2026-04-05">
                         <a href="renovacao-de-visto-americano-sem-entrevista/" class="block overflow-hidden rounded-[3rem] mb-8 relative aspect-[4/5] border border-white/5">
                             <img src="https://i.ibb.co/Wp5wkcym/visto-img.webp" alt="Renovação de Visto" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer">
                             <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-80"></div>
                             <div class="absolute bottom-8 left-8 right-8">
                                 <span class="bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[9px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 inline-block">Agilidade</span>
-                                <h3 class="text-white text-2xl font-serif italic leading-tight italic font-bold">Renovação sem Entrevista em 2026</h3>
+                                <h3 class="text-2xl font-display italic text-white leading-tight">Renovação sem Entrevista em 2026</h3>
                             </div>
                         </a>
                         <p class="text-primary-light/40 text-xs leading-relaxed mb-6 font-light">Descubra se você é elegível para renovar seu visto sem precisar enfrentar a entrevista presencial no consulado.</p>
@@ -225,13 +267,13 @@
                     </article>
 
                     <!-- Post 6: Consultoria vs Assessoria -->
-                    <article class="blog-post reveal reveal-up reveal-delay-2 group">
+                    <article class="blog-post reveal reveal-up reveal-delay-2 group" data-category="Visto Americano" data-date="2026-04-15">
                         <a href="consultoria-vs-assessoria-diferenca/" class="block overflow-hidden rounded-[3rem] mb-8 relative aspect-[4/5] border border-white/5">
                             <img src="https://i.ibb.co/xKNms918/consultoriaxassessoria.webp" alt="Consultoria vs Assessoria" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer">
                             <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-80"></div>
                             <div class="absolute bottom-8 left-8 right-8">
                                 <span class="bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[9px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 inline-block">Insight</span>
-                                <h3 class="text-white text-2xl font-serif italic leading-tight italic font-bold">Consultoria vs Assessoria: Qual escolher?</h3>
+                                <h3 class="text-2xl font-display italic text-white leading-tight">Consultoria vs Assessoria: Qual escolher?</h3>
                             </div>
                         </a>
                         <p class="text-primary-light/40 text-xs leading-relaxed mb-6 font-light">Por que apenas preencher formulários não é suficiente para perfis de alta performance e viagens de luxo.</p>
@@ -331,5 +373,53 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('blog-posts-grid');
+            const posts = Array.from(document.querySelectorAll('.blog-post'));
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const sortSelect = document.getElementById('sort-date');
+
+            function updateGrid() {
+                const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                const sortOrder = sortSelect.value;
+
+                // Filter
+                let filteredPosts = posts.filter(post => {
+                    const category = post.dataset.category;
+                    return activeFilter === 'all' || category === activeFilter;
+                });
+
+                // Sort
+                filteredPosts.sort((a, b) => {
+                    const dateA = new Date(a.dataset.date);
+                    const dateB = new Date(b.dataset.date);
+                    return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
+                });
+
+                // Clear and Re-append
+                grid.innerHTML = '';
+                filteredPosts.forEach(post => {
+                    post.classList.remove('hidden', 'active');
+                    grid.appendChild(post);
+                    // Re-trigger reveal animation
+                    setTimeout(() => post.classList.add('active'), 50);
+                });
+            }
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    updateGrid();
+                });
+            });
+
+            sortSelect.addEventListener('change', updateGrid);
+
+            // Initial Update to apply default sorting (newest)
+            updateGrid();
+        });
+    </script>
 </body>
 </html>
